@@ -1,7 +1,12 @@
 import React from "react";
 
-function CompanyCard({ title }) {
-  return <h5>{{ title }}</h5>;
+function CompanyCard({ title, numEmployees }) {
+  return (
+    <card>
+      <h5>{title}</h5>
+      <p>Employees: {numEmployees}</p>
+    </card>
+  );
 }
 
 export default CompanyCard;
