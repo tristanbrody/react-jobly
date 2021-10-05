@@ -14,17 +14,21 @@ function Companies() {
       })
     );
   }
-  async function getData2(search = "") {
+  async function getData2(search = "search") {
     console.log(`get data function is running now and search is ${search}`);
+    const url = `http://localhost:3001/companies/${search}`;
+    if (url === `http://localhost:3001/companies/`) {
+      return undefined;
+    }
     await fetch(`http://localhost:3001/companies/${search}`).then(d =>
       d.json().then(res => {
-        console.dir(res);
+        toggleLoaded(true);
         setCompanies([res]);
       })
     );
   }
   useEffect(() => {
-    getData();
+    getData2();
   }, []);
   console.log(companies);
   return (
@@ -35,7 +39,12 @@ function Companies() {
       companies[0] !== undefined &&
       companies[0].error === undefined ? (
         companies.map(c => {
-          return <CompanyCard title={c.name} numEmployees={c.numEmployees} />;
+          return (
+            <CompanyCard
+              title={c.company.name}
+              numEmployees={c.company.numEmployees}
+            />
+          );
         })
       ) : (
         <div>Loading</div>
