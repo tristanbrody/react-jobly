@@ -14,13 +14,26 @@ function Companies() {
       })
     );
   }
+  async function getData2(search = "") {
+    console.log(`get data function is running now and search is ${search}`);
+    await fetch(`http://localhost:3001/companies/${search}`).then(d =>
+      d.json().then(res => {
+        console.dir(res);
+        setCompanies([res]);
+      })
+    );
+  }
   useEffect(() => {
     getData();
   }, []);
+  console.log(companies);
   return (
     <div>
-      <CompanySearchForm getData={getData} />
-      {isLoaded ? (
+      <CompanySearchForm getData2={getData2} />
+      {isLoaded &&
+      companies.map !== undefined &&
+      companies[0] !== undefined &&
+      companies[0].error === undefined ? (
         companies.map(c => {
           return <CompanyCard title={c.name} numEmployees={c.numEmployees} />;
         })
