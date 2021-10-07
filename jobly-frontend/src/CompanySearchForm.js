@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Company from "./Company";
 
-function CompanySearchForm({ getData2 }) {
+function CompanySearchForm({ getData }) {
   const [search, setSearch] = useState("");
   const handleChange = e => {
     setSearch(e.target.value);
-    const res = getData2(search);
+    const res = getData(search);
     // .then(res => toggleLoaded(true));
   };
   return (

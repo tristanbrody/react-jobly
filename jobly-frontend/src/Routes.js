@@ -26,6 +26,10 @@ function NavLinks() {
       path: `/login`,
     },
     {
+      name: "signup",
+      path: "/signup",
+    },
+    {
       name: "profile",
       path: `/profile`,
     },
