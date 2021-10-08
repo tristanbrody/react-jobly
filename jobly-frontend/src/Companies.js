@@ -5,15 +5,6 @@ import CompanySearchForm from "./CompanySearchForm";
 function Companies() {
   const [isLoaded, toggleLoaded] = useState(false);
   const [companies, setCompanies] = useState([]);
-  // async function getData(search = "") {
-  //   console.log(`get data function is running now and search is ${search}`);
-  //   await fetch(`http://localhost:3001/companies/${search}`).then(d =>
-  //     d.json().then(res => {
-  //       toggleLoaded(true);
-  //       setCompanies(res.companies);
-  //     })
-  //   );
-  // }
   async function getData(search = "") {
     console.log(isLoaded);
     console.log(`get data function is running now and search is ${search}`);

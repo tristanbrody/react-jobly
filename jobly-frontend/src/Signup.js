@@ -1,15 +1,14 @@
 import React from "react";
+import JoblyApi from "./api.js";
 
 function Signup() {
   const handleRegistration = async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const values = Object.fromEntries(formData.entries());
-    console.log(JSON.stringify(values));
-    return fetch("http://localhost:3001/auth/register", {
-      method: "POST",
-      body: JSON.stringify(values),
-    }).then(data => console.dir(data));
+    JoblyApi.signup(JSON.stringify(values)).then(token =>
+      localStorage.setItem("userToken", token)
+    );
   };
   return (
     <div>

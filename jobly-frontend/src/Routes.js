@@ -16,8 +16,9 @@ import Jobs from "./Jobs";
 import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
+import Logout from "./Logout";
 
-function NavLinks() {
+function NavLinks(signedIn) {
   const navBarData = [
     { name: "companies", path: "/companies" },
     { name: "jobs", path: "/jobs" },
@@ -32,6 +33,10 @@ function NavLinks() {
     {
       name: "profile",
       path: `/profile`,
+    },
+    {
+      name: "logout",
+      path: `/logout`,
     },
   ];
   return (
@@ -56,6 +61,9 @@ function NavLinks() {
           </Route>
           <Route exact path="/profile">
             <Profile />
+          </Route>
+          <Route exact path="/logout">
+            <Logout />
           </Route>
         </nav>
       </Switch>
