@@ -1,7 +1,7 @@
 import React from "react";
+import JoblyApi from "./api";
 
-function CompanyCard({ title, numEmployees }) {
-  console.log(numEmployees);
+function CompanyCard({ title, numEmployees = null }) {
   return (
     <card>
       <h5>{title}</h5>

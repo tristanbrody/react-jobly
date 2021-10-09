@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import loggedInContext from "./loggedInContext";
 import JoblyApi from "./api.js";
 
 function Signup() {
+  const history = useHistory();
+  const { loggedIn, toggleLoggedIn } = useContext(loggedInContext);
+  if (loggedIn) history.push("/profile");
   const handleRegistration = async e => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const values = Object.fromEntries(formData.entries());
-    JoblyApi.signup(JSON.stringify(values)).then(token =>
-      localStorage.setItem("userToken", token)
-    );
+    JoblyApi.signup(JSON.stringify(values)).then(token => {
+      localStorage.setItem("userToken", token);
+      toggleLoggedIn(true);
+      JoblyApi.token = token;
+    });
   };
   return (
     <div>

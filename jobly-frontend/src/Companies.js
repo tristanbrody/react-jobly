@@ -6,8 +6,6 @@ function Companies() {
   const [isLoaded, toggleLoaded] = useState(false);
   const [companies, setCompanies] = useState([]);
   async function getData(search = "") {
-    console.log(isLoaded);
-    console.log(`get data function is running now and search is ${search}`);
     const url = `http://localhost:3001/companies?name=${search}`;
     if (url === `http://localhost:3001/companies?name=/`) {
       toggleLoaded(true);
@@ -24,7 +22,6 @@ function Companies() {
   useEffect(() => {
     getData();
   }, []);
-  console.log(companies);
   return (
     <div>
       <CompanySearchForm getData={getData} />
@@ -32,7 +29,6 @@ function Companies() {
       companies[0] !== undefined &&
       companies[0].error === undefined ? (
         companies[0].companies.map(c => {
-          console.log(`c is ${c}`);
           return <CompanyCard title={c.name} numEmployees={c.numEmployees} />;
         })
       ) : (
